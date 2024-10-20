@@ -147,6 +147,6 @@ public class TasksController {
         tasksService.deleteById(tasksId);
 
         return "redirect:/tasks-list";
-        //@TODO zastanowić się czy jest sens usuwania zadań czy po prostu pozwolić im się zbierać w taskhistory
+        //@TODO dodać obsługę delete task i delete profile
     }
 }
