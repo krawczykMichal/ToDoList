@@ -79,4 +79,12 @@ public class TasksService {
             tasksDao.deleteById(tasks.getTasksId());
         }
     }
+
+    @Transactional
+    public void markAsDone(Integer tasksId) {
+        Tasks tasks = findById(tasksId);
+        Tasks tasks1 = tasks.withCompletedAt(LocalDateTime.now());
+        LocalDateTime completedAt = tasks1.getCompletedAt();
+        tasksDao.markAsDone(tasksId, completedAt);
+    }
 }

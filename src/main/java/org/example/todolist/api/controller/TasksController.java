@@ -78,34 +78,34 @@ public class TasksController {
     }
 
 
-    @GetMapping(value = "/tasks/details")
+    @GetMapping(value = "/tasks/details/{tasksId}")
     public String tasksDetails(
+            @PathVariable("tasksId")
+            Integer tasksId,
             @ModelAttribute("tasksDTO")
             TasksDTO tasksDTO,
             HttpSession httpSession,
             Model model
     ) {
-
-
-
-        String username = httpSession.getAttribute("username").toString();
-        List<Tasks> tasksList = tasksService.showTasksListForProfilesUsernameUndone(username);
-        model.addAttribute("tasksList", tasksList);
+        Tasks tasks = tasksService.findById(tasksId);
+        model.addAttribute("tasks", tasks);
 
         return "tasks_details";
     }
 
-    @PostMapping(value = "/tasks/details")
+    @PatchMapping(value = "/tasks/details/{tasksId}")
     public String tasksDetailsPage(
+            @RequestParam("tasksId")
+            Integer tasksId,
             @ModelAttribute("tasksDTO")
             TasksDTO tasksDTO,
             HttpSession httpSession,
             Model model
     ) {
-        String username = httpSession.getAttribute("username").toString();
-        List<Tasks> tasksList = tasksService.showTasksListForProfilesUsernameUndone(username);
-        model.addAttribute("tasksList", tasksList);
-        //@TODO dodać opcje wysłania formularza aby zmienić status z false na true w zadaniu
+
+        Tasks tasks = tasksService.findById(tasksId);
+        model.addAttribute("tasks", tasks);
+        tasksService.markAsDone(tasksId);
 
         return "redirect:/tasks-list";
     }
@@ -147,5 +147,6 @@ public class TasksController {
         tasksService.deleteById(tasksId);
 
         return "redirect:/tasks-list";
+        //@TODO zastanowić się czy jest sens usuwania zadań czy po prostu pozwolić im się zbierać w taskhistory
     }
 }

@@ -9,6 +9,7 @@ import org.example.todolist.infrastructure.database.repository.jpa.TasksJpaRepos
 import org.example.todolist.infrastructure.database.repository.mapper.TasksEntityMapper;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -54,5 +55,10 @@ public class TasksRepository implements TasksDao {
     public List<Tasks> findByProfilesId(Integer profilesId) {
         List<TasksEntity> tasksEntityList = tasksJpaRepository.findByProfilesId(profilesId);
         return tasksEntityList.stream().map(tasksEntityMapper::mapFromTasksEntity).collect(Collectors.toList());
+    }
+
+    @Override
+    public void markAsDone(Integer tasksId, LocalDateTime completedAt) {
+        tasksJpaRepository.markAsDone(tasksId, completedAt);
     }
 }

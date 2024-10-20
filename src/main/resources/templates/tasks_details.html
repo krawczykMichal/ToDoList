@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-4">
-            <a th:href="@{/tasks-home}" class="btn btn-info" role="button">Go back to the main page</a>
+            <a th:href="@{/tasks-home}" class="btn btn-info" role="button">Task home</a>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="tasks : ${tasksList}">
+    <tr th:value="tasks">
         <td th:text="${tasks.title}"></td>
         <td th:text="${tasks.description}"></td>
         <td th:text="${tasks.reminderDatetime != null ? tasks.reminderDatetime.format(T(java.time.format.DateTimeFormatter).ofPattern('dd MMMM yyyy HH:mm')) : null}"></td>
@@ -69,7 +69,11 @@
         </td>
         <td th:text="${tasks.completedAt != null ? tasks.completedAt.format(T(java.time.format.DateTimeFormatter).ofPattern('dd MMMM yyyy HH:mm')) : null}"></td>
         <td>
-            <a th:href="@{/tasks}"></a>
+            <form th:action="@{/tasks/details/{tasksId}(tasksId=${tasks.tasksId})}" method="post">
+                <input type="hidden" name="_method" value="patch" />
+                <input type="hidden" name="tasksId" th:value="${tasks.tasksId}"/>
+                <button type="submit" th:disabled="${tasks.isCompleted}">Done</button>
+            </form>
         </td>
     </tr>
     </tbody>
