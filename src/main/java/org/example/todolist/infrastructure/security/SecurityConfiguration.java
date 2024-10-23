@@ -57,12 +57,13 @@ public class SecurityConfiguration {
         http.authenticationManager(authManager());
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/profiles/register","/error", "/images/oh_no.png").permitAll()
+                        .requestMatchers("/", "/profiles/register","/error").permitAll()
                         .requestMatchers("/profiles/**", "/tasks-home", "tasks-create", "tasks-list", "tasks/**").hasAnyAuthority("USER", "ADMIN").anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .defaultSuccessUrl("/profiles/home"))
+                                .defaultSuccessUrl("/profiles/home")
+                                .failureUrl("/login"))
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)

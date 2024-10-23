@@ -140,7 +140,7 @@ public class TasksController {
          return "redirect:/tasks-list";
     }
 
-    @DeleteMapping(value = "/tasks/{tasksId}")
+    @DeleteMapping(value = "/tasks/{tasksId}/delete")
     public String tasksDeletePage(
             @PathVariable Integer tasksId
     ) {

@@ -30,9 +30,10 @@
     <a th:href="@{/profiles/{profilesId}/update(profilesId=${profiles.profilesId})}" class="btn btn-info" role="button">Update profiles</a>
 </div>
 <br>
-<div>
-    <a th:href="@{/{profilesId}/delete(profilesId${profiles.profilesId})}" class="btn btn-info" role="button">Delete profiles</a>
-</div>
+    <form th:action="@{/{profilesId}/delete(profilesId=${profiles.profilesId})}" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit">Delete profile</button>
+    </form>
 </body>
 
 </html>

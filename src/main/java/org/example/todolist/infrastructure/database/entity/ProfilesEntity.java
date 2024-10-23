@@ -2,8 +2,6 @@ package org.example.todolist.infrastructure.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.logging.log4j.util.Lazy;
-import org.example.todolist.infrastructure.security.UserEntity;
 
 import java.util.Set;
 

@@ -145,6 +145,6 @@ public class ProfilesController {
     ) {
         profilesService.deleteById(profilesId);
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 }

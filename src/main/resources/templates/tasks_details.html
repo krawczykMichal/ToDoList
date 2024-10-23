@@ -79,5 +79,9 @@
     </tbody>
 </table>
 
+<form th:action="@{/tasks/{tasksId}/delete(tasksId=${tasks.tasksId})}" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <button type="submit">Delete task</button>
+</form>
 </body>
 </html>
