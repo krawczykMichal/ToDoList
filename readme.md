@@ -30,28 +30,29 @@ A simple ToDo List application built with Spring Boot, providing task management
 
 ## 🔌Database
 1. Configure the database connection in application.properties:
+   ```sh
+   spring.datasource.url=jdbc:postgresql://localhost:5432/todo_db
+   spring.datasource.username=yourusername
+   spring.datasource.password=yourpassword
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/todo_db
-
-spring.datasource.username=yourusername
-
-spring.datasource.password=yourpassword
 2. Run database migrations:
-
-mvn flyway:migrate 
+   ```sh
+   mvn flyway:migrate 
 
 ## ▶️ Running the Application
 
 1. To start the application, use:
-
-mvn spring-boot:run
+   ```sh
+   mvn spring-boot:run
 
 The app should be accessible at: http://localhost:8080
 
 ## 🧪 Testing
+1. To run tests:
 
-1.  To run tests:
-mvn test
+   ```sh 
+   mvn test
+   
 
 ## 📜 License
 This project is licensed under the MIT License - see the [License](https://github.com/krawczykMichal/ToDoList/blob/master/MitLicense) file for details.
