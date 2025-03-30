@@ -75,7 +75,7 @@ public class ProfilesService {
                 .build();
     }
 
-    private String hashPassword(String profilesUserPassword) {
+    protected String hashPassword(String profilesUserPassword) {
         return BCrypt.hashpw(profilesUserPassword, BCrypt.gensalt(12));
     }
 
@@ -99,7 +99,4 @@ public class ProfilesService {
         profilesDao.deleteById(profilesId);
     }
 
-    public ProfilesDTO mapProfile(Profiles profilesByUsername) {
-        return profilesDTOMapper.map(profilesByUsername);
-    }
 }

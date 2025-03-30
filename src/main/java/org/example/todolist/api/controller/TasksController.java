@@ -147,6 +147,5 @@ public class TasksController {
         tasksService.deleteById(tasksId);
 
         return "redirect:/tasks-list";
-        //@TODO dodać obsługę delete task i delete profile
     }
 }

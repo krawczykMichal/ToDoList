@@ -58,7 +58,6 @@ public class ProfilesController {
         Profiles profilesByUsername = profilesService.findProfilesByUsername(username);
 
         httpSession.setAttribute("username", username);
-        httpSession.setAttribute("profile", profilesByUsername);
         model.addAttribute("profilesByUsername", profilesByUsername);
 
         return "profiles_home";

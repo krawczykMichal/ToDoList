@@ -10,6 +10,5 @@ public class ToDoListApplication {
         SpringApplication.run(ToDoListApplication.class, args);
     }
 
-//    @TODO remember to add vaadin to my application
 
 }
